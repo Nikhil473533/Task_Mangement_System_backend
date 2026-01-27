@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+               xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="
+                http://www.liquibase.org/xml/ns/dbchangelog
+                https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
+   <changeSet id="002-add-task-subclass-columns" author="njoglekar">
+   
+      <!-- Columns for Call Task -->
+      <addColumn tableName="task">
+          <column name="phone_number" type="VARCHAR(20)"/>
+          <column name="duration_minutes" type="INT"/>
+      </addColumn>
+      
+      <!-- Columns for Letter Task -->
+      <addColumn tableName="task">
+          <column name="address" type="VARCHAR(200)"/>
+      </addColumn>
+      
+      <!-- Columns for TODO Task -->
+      <addColumn tableName="task">
+          <column name="due_date" type="DATE"/>
+      </addColumn>
+   
+   <rollback>
+      <dropColumn tableName="task" columnName="phone_number"/>
+      <dropColumn tableName="task" columnName="duration_minutes"/>
+      <dropColumn tableName="task" columnName="address"/>
+      <dropColumn tableName="task" columnName="due_date"/>
+   </rollback>
+   </changeSet>
+</databaseChangeLog>   

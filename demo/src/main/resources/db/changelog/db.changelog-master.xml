@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+               xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="
+                http://www.liquibase.org/xml/ns/dbchangelog
+                https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
+                
+      <include file="001-create-task-table.xml" relativeToChangelogFile="true"/>          
+      <include file="002-add-task-subclass-columns.xml" relativeToChangelogFile="true"/>
+      <include file="003-create-universal-audit-log.xml" relativeToChangelogFile="true"/>
+      <include file="004-create-task-comment-table.xml" relativeToChangelogFile="true"/>
+      <include file="005-add-update-softdelete-to-task-comment.xml" relativeToChangelogFile="true"/>
+      <include file="006-add-audit-version-to-audit_log.sql" relativeToChangelogFile="true"/>
+      <include file="007-backfill-v1-records.sql" relativeToChangelogFile="true"/>
+      <include file="008-backfill-v2-records.sql" relativeToChangelogFile="true"/>
+      <include file="009-create-users-table.sql" relativeToChangelogFile="true"/>
+      <include file="010-seed-default-user.sql" relativeToChangelogFile="true"/>
+      <include file="011-add-password-to-users.sql" relativeToChangelogFile="true"/>
+      <include file="012-backfill-user-passwords.sql" relativeToChangelogFile="true"/>
+      <include file="013-make-password-not-null.sql" relativeToChangelogFile="true"/>
+      <include file="014-create-role-table.sql" relativeToChangelogFile="true"/>
+      <include file="015-seed-data-in-role-table.sql" relativeToChangelogFile="true"/>
+      <include file="016-create-user_role-table.sql" relativeToChangelogFile="true"/>
+      <include file="017-make-njoglekar-as-admin.sql" relativeToChangelogFile="true"/>
+</databaseChangeLog>                
+               
