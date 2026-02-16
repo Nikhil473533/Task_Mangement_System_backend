@@ -14,4 +14,5 @@ public interface TaskService {
 	public void softDelete(Long id);
 	public List<TaskResponse> read();
 	public Optional<TaskResponse>findById(Long id);
+	public TaskResponse changeTaskStatus(Long id, String status);
 }

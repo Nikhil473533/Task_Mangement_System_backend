@@ -1,9 +1,7 @@
 package com.practice.demo.service.security;
 
 import java.util.Date;
-
 import javax.crypto.SecretKey;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import com.practice.demo.beans.User;

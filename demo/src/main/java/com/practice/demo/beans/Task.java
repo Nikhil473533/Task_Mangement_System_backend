@@ -42,7 +42,9 @@ public abstract class Task {
    @JoinColumn(name="updated_by_user_id")
    private User updatedByUser;
    
-
+   @ManyToOne(optional=false)
+   @JoinColumn(name="status_id")
+   private TaskStatus taskStatus;
 
    @PrePersist
    void onCreate() {
@@ -131,7 +133,14 @@ public abstract class Task {
 
    public void setUpdatedByUser(User updatedByUser) {
 	this.updatedByUser = updatedByUser;
+   }
+
+   public TaskStatus getTaskStatus() {
+	return taskStatus;
+   }
+
+   public void setTaskStatus(TaskStatus taskStatus) {
+	this.taskStatus = taskStatus;
    } 
-   
-   
+     
 }

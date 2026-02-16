@@ -9,5 +9,6 @@ public record TaskResponse(
                             String description,
                             LocalDateTime createdAt,
                             boolean     deleted,
+                            String  taskStatus,
                             LocalDateTime updatedAt
 		                  ) {}

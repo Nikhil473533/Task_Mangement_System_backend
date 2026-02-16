@@ -23,5 +23,11 @@
       <include file="015-seed-data-in-role-table.sql" relativeToChangelogFile="true"/>
       <include file="016-create-user_role-table.sql" relativeToChangelogFile="true"/>
       <include file="017-make-njoglekar-as-admin.sql" relativeToChangelogFile="true"/>
+      <include file="018-create-table-task_status.sql" relativeToChangelogFile="true"/>
+      <include file="019-insert-default-task-statuses-in-task_status.sql" relativeToChangelogFile="true"/>
+      <include file="020-add-status_id-column-to-task.sql" relativeToChangelogFile="true"/>
+      <include file="021-add-foreign-key-constraint-on-status_id-column-in-task.sql" relativeToChangelogFile="true"/>
+      <include file="022-backfill-existing-task-statuses.sql" relativeToChangelogFile="true"/>
+      <include file="023-make-status_id-column-not-null-in-task.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>                
                

@@ -60,4 +60,25 @@ public class GlobalExceptionHandler {
                         "An unexpected error occurred"));
     }
 	
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<ApiError> handleIllegalState(IllegalStateException ex)
+    {
+    	ApiError error = new ApiError(
+    			                  HttpStatus.BAD_REQUEST.value(),
+    			                  "INVALID_STATE",
+    			                  ex.getMessage()
+    			                     );
+		return ResponseEntity.badRequest().body(error);
+    }
+    @ExceptionHandler(BusinessRuleViolationException.class)
+    public ResponseEntity<ApiError> handleBusinessRule(BusinessRuleViolationException ex) {
+
+        ApiError error = new ApiError(
+                HttpStatus.BAD_REQUEST.value(),
+                "BUSINESS_RULE_VIOLATION",
+                ex.getMessage()
+        );
+
+        return ResponseEntity.badRequest().body(error);
+    }
 }
