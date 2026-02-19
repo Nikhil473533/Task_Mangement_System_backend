@@ -28,8 +28,9 @@ public List<StatusCountDTO> getStatusWiseTaskCount(){
             "SELECT new com.practice.demo.dto.StatusCountDTO(" +
             "ts.code, ts.displayName, COUNT(t.id)) " +
             "FROM TaskStatus ts " +
-            "LEFT JOIN ts.tasks t " +
-            "WITH t.deleted = false " +
+            "LEFT JOIN Task t " +
+            "ON t.taskStatus = ts " +
+            "AND t.deleted = false " +
             "GROUP BY ts.id, ts.code, ts.displayName " +
             "ORDER BY ts.id";
 

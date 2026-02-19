@@ -9,16 +9,16 @@ import com.practice.demo.beans.User;
 @Component
 public class SecurityContextCurrentUserProvider implements CurrentUserProvider {
 
+    @Override
+    public User getCurrentUser() {
 
-	@Override
-	public User getCurrentUser() {
-		
-		Authentication auth =
-				 SecurityContextHolder.getContext().getAuthentication();
-		
-		UserPrincipal principal = (UserPrincipal) auth.getPrincipal();
-		
-		return principal.getUser();
-	}
+        Authentication auth =
+                SecurityContextHolder.getContext().getAuthentication();
 
+        if (auth == null || !(auth.getPrincipal() instanceof UserPrincipal)) {
+            throw new IllegalStateException("No authenticated user found");
+        }
+
+        return ((UserPrincipal) auth.getPrincipal()).getUser();
+    }
 }

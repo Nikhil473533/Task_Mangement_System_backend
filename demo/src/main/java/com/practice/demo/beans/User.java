@@ -39,6 +39,9 @@ public class User {
 	
 	private LocalDateTime updatedAt;
 	
+	@Column(nullable = false)
+	private String password;
+	
 	@ManyToMany
 	@JoinTable(
 	  name= "user_role",
@@ -117,6 +120,22 @@ public class User {
 
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 	

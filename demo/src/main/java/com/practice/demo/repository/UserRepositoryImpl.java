@@ -28,7 +28,8 @@ public Optional<User> getDefaultUser(String username) {
 @Override
 public Optional<User> findByUsername(String username) {
  
-   return em.createQuery("SELECT u FROM User u WHERE u.username = :username", User.class)
+   return em.createQuery("SELECT u FROM User u LEFT JOIN FETCH u.roles "
+   		         + "WHERE u.username = :username", User.class)
                  .setParameter("username", username)
                  .getResultList()
                  .stream()
