@@ -7,4 +7,6 @@ import com.practice.demo.beans.User;
 public interface UserRepository {
 	public Optional<User> getDefaultUser(String username);
 	public Optional<User> findByUsername(String username);
+	public Optional<User> findByUserId(Long userId);
+	public User save(User user);
 }

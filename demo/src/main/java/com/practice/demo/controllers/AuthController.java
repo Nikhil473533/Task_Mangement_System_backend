@@ -1,5 +1,6 @@
 package com.practice.demo.controllers;
 
+import com.practice.demo.service.UserService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,13 +23,16 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
     private final UserRepository userRepository;
+    private final UserService userService;
 
     public AuthController(AuthenticationManager authenticationManager,
                           JwtUtil jwtUtil,
-                          UserRepository userRepository) {
+                          UserRepository userRepository,
+                          UserService userService) {
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @PostMapping("/login")
@@ -71,4 +75,17 @@ public class AuthController {
 	
 	@GetMapping("/check")
 	public void check() {}
+
+    @PostMapping("/forgot-password")
+    public String forgotPassword(@RequestParam String username)
+    {
+        return userService.createResetToken(username);
+    }
+
+    @PostMapping("/reset-password")
+    public String resetPassword(@RequestParam String token, @RequestParam String newPassword)
+    {
+       return userService.resetPassword(token, newPassword);
+    }
+
 }

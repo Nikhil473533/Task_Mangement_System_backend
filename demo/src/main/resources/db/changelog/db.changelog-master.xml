@@ -31,7 +31,8 @@
       <include file="023-make-status_id-column-not-null-in-task.sql" relativeToChangelogFile="true"/>
       <include file="024-backfill-created_by_user_id-in-task-table.sql" relativeToChangelogFile="true"/>
       <include file="025-add-assigned_user_id-column-to-task-table.sql" relativeToChangelogFile="true"/> 
-      <include file="026-Add-Foreign-Key-constraint-in-assigned_user_id-column.sql" relativeToChangelogFile="true"/> 
+      <include file="026-Add-Foreign-Key-constraint-in-assigned_user_id-column.sql" relativeToChangelogFile="true"/>
+      <include file="027-Create-password_reset_token-table.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>                
 
                

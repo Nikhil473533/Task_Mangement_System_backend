@@ -36,4 +36,27 @@ public Optional<User> findByUsername(String username) {
                  .findFirst();
 }
 
+	@Override
+	public Optional<User> findByUserId(Long userId) {
+
+	String sql = "SELECT U FROM User U WHERE U.id =:userId";
+
+	return  em.createQuery(sql, User.class)
+			.setParameter("userId", userId)
+			.getResultList()
+			.stream()
+			.findFirst();
+	}
+
+	@Override
+	public User save(User user) {
+
+	 if(user.getId() == null) {
+		 em.persist(user);
+		 return user;
+	 }
+
+		return em.merge(user);
+	}
+
 }

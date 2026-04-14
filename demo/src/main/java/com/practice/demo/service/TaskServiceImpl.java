@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.practice.demo.service.security.CurrentUserProvider;
 import com.practice.demo.beans.Task;
 import com.practice.demo.beans.TaskStatus;
