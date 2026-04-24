@@ -3,6 +3,8 @@ package com.practice.demo.service;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.practice.demo.beans.Task;
 import com.practice.demo.beans.TaskComment;
 import com.practice.demo.beans.User;
@@ -12,9 +14,8 @@ import com.practice.demo.dto.TaskCommentResponse;
 import com.practice.demo.repository.TaskCommentRepositoryImpl;
 import com.practice.demo.repository.TaskRepositoryImpl;
 import com.practice.demo.service.security.CurrentUserProvider;
-
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
+
 
 @Service
 @Transactional

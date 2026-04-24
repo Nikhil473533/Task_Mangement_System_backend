@@ -2,13 +2,14 @@ package com.practice.demo.service;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.practice.demo.beans.Task;
 import com.practice.demo.beans.User;
 import com.practice.demo.dto.StatusCountDTO;
 import com.practice.demo.dto.TaskResponse;
 import com.practice.demo.repository.DashboardRepository;
 import com.practice.demo.service.security.CurrentUserProvider;
-import jakarta.transaction.Transactional;
+
 
 @Service
 @Transactional

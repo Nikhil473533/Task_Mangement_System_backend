@@ -1,16 +1,19 @@
 package com.practice.demo.controllers;
 
 import com.practice.demo.service.UserService;
+import java.util.Map;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.practice.demo.beans.User;
+import com.practice.demo.dto.ResetPasswordRequest;
 import com.practice.demo.repository.UserRepository;
 import com.practice.demo.service.security.JwtUtil;
 import jakarta.servlet.http.Cookie;
@@ -77,15 +80,15 @@ public class AuthController {
 	public void check() {}
 
     @PostMapping("/forgot-password")
-    public String forgotPassword(@RequestParam String username)
+    public Map<String, String> forgotPassword(@RequestParam String username)
     {
         return userService.createResetToken(username);
     }
 
     @PostMapping("/reset-password")
-    public String resetPassword(@RequestParam String token, @RequestParam String newPassword)
+    public Map<String, String> resetPassword(@RequestBody ResetPasswordRequest request)
     {
-       return userService.resetPassword(token, newPassword);
+       return userService.resetPassword(request.getToken(), request.getNewPassword());
     }
 
 }

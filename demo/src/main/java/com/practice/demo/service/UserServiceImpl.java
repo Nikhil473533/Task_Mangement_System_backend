@@ -7,8 +7,8 @@ import com.practice.demo.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public String createResetToken(String username) {
+    public Map<String, String> createResetToken(String username) {
 
         User user = userRepository.findByUsername(username).orElseThrow();
 
@@ -39,11 +39,11 @@ public class UserServiceImpl implements UserService{
 
         tokenRepository.save(resetToken);
 
-        return token;
+        return Map.of("token", token);
     }
 
     @Override
-    public String resetPassword(String token, String newPassword) {
+    public Map<String, String> resetPassword(String token, String newPassword) {
 
         PasswordResetToken resetToken = tokenRepository.findByToken(token).orElseThrow();
 
@@ -57,8 +57,6 @@ public class UserServiceImpl implements UserService{
 
        userRepository.save(user);
 
-       return """
-               message: "Password has been reset"
-               """;
+       return Map.of("message", "Password has been reset successfully");
     }
 }
